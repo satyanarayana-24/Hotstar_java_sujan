@@ -4,17 +4,17 @@ pipeline {
 
     environment {
         SONARQUBE_ENV = 'sq'
-        DOCKER_IMAGE = "rajeshtutta123/rajesh_hotstar-02-04-26"
+        DOCKER_IMAGE = "9397054542/doc_img_name"
         AWS_CREDS = credentials('aws-creds')
-        AWS_DEFAULT_REGION = 'us-east-1'
-        RECIPIENTS = 'rajeshtutta123@gmail.com'
+        AWS_DEFAULT_REGION = 'ap-south-1'
+        RECIPIENTS = 'satyanarayanag666@gmail.com'
     }
 
     stages {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/rajeshtutta/Hotstar-02-04-26-.git'
+                git branch: 'main', url: 'https://github.com/satyanarayana-24/Hotstar_java_sujan'
             }
         }
         stage('BUILD') {
@@ -24,7 +24,7 @@ pipeline {
     }
         stage('JENKINS TO NEXUS') {
         steps {
-          withMaven(jdk: 'jdk21', maven: 'maven3', traceability: true) {
+          withMaven(jdk: 'jdk17', maven: 'maven3', traceability: true) {
              sh 'mvn deploy'
 }
         }
@@ -81,7 +81,7 @@ pipeline {
                 export AWS_ACCESS_KEY_ID=$AWS_CREDS_USR
                 export AWS_SECRET_ACCESS_KEY=$AWS_CREDS_PSW
 
-                aws eks update-kubeconfig --region us-east-1 --name mycluster1
+                aws eks update-kubeconfig --region ap-south1 --name mycluster
                 kubectl apply -f deployment.yml
                 kubectl apply -f service.yml
                 '''
