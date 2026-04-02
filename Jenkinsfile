@@ -4,7 +4,7 @@ pipeline {
     environment {
         SONARQUBE_ENV = 'sq'
         DOCKER_IMAGE = "9397054542/doc_img_name"
-        AWS_CREDS = credentials('aws-creds')
+        // AWS_CREDS = credentials('aws-creds')
         AWS_DEFAULT_REGION = 'ap-south-1'
         RECIPIENTS = 'satyanarayanag666@gmail.com'
     }
@@ -77,8 +77,8 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh '''
-                export AWS_ACCESS_KEY_ID=$AWS_CREDS_USR
-                export AWS_SECRET_ACCESS_KEY=$AWS_CREDS_PSW
+                // export AWS_ACCESS_KEY_ID=$AWS_CREDS_USR
+                // export AWS_SECRET_ACCESS_KEY=$AWS_CREDS_PSW
 
                 aws eks update-kubeconfig --region ap-south1 --name mycluster
                 kubectl apply -f deployment.yml
