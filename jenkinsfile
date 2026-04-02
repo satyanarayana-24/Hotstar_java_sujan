@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_USER     = "kranthi6166"            // ✅ your DockerHub username
-        IMAGE_NAME      = "java-project-maven-new" // ✅ project image name
+        DOCKER_USER     = "rajeshtutta123"            // ✅ your DockerHub username
+        IMAGE_NAME      = "java-project-hotstar-new" // ✅ project image name
         IMAGE_TAG       = "latest"
         CONTAINER_NAME  = "HOTSTAR-CONTAINER"
     }
@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Naveen1-6/HOTSTAR-Project.git'
+                git branch: 'main', url: 'https://github.com/rajeshtutta/Hotstar-02-04-26-.git'
             }
         }
 
