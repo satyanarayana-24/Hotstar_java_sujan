@@ -109,6 +109,8 @@ pipeline {
             sh '''
             kubectl apply -f prometheus.yml
             kubectl apply -f grafana.yml
+            kubectl apply -f node-exporter.yml
+            kubectl rollout restart deployment/prometheus
             '''
         }
       }
