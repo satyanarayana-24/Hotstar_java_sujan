@@ -6,7 +6,7 @@ pipeline {
         DOCKER_IMAGE = "9397054542/doc_img_name"
         
          KUBECONFIG = "/var/lib/jenkins/.kube/config"
-        EKS_CLUSTER = "myclusterr"
+        EKS_CLUSTER = "mycluster"
         AWS_DEFAULT_REGION = 'ap-south-1'
         RECIPIENTS = 'satyanarayanag666@gmail.com'
     }
