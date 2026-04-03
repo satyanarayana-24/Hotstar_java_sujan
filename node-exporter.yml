@@ -47,4 +47,4 @@ spec:
     app: node-exporter
   ports:
   - port: 9100
-    targetPort: 910
+    targetPort: 9100
