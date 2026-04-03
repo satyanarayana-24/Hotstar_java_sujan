@@ -50,9 +50,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
+                  sh '''
                  docker rmi -f ${DOCKER_IMAGE}/${IMAGE_NAME}:${IMAGE_TAG} || true
                  docker build -t ${DOCKER_IMAGE}/${IMAGE_NAME}:${IMAGE_TAG} .
-                
+                ...
                 
             }
         }
