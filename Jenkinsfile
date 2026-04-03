@@ -106,14 +106,13 @@ pipeline {
 
         stage('Deploy Monitoring Stack') {
     steps {
-        withKubeConfig(credentialsId: 'kubeconfig') {
             sh '''
             kubectl apply -f prometheus.yml
             kubectl apply -f grafana.yml
             '''
         }
       }
-    }
+    
     }
 
     post {
