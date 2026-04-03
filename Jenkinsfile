@@ -9,6 +9,7 @@ pipeline {
         EKS_CLUSTER = "mycluster"
         AWS_DEFAULT_REGION = 'ap-south-1'
         RECIPIENTS = 'satyanarayanag666@gmail.com'
+        IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
     stages {
@@ -88,8 +89,10 @@ pipeline {
         
         stage('Deploy to EKS') {
             steps {
-                sh '''     
-                       
+                sh '''
+                sed -i "s|image:.*|image: $DOCKER_IMAGE:$IMAGE_TAG|" deployment.yml  
+                // sed -i "s|image:.*|image: $DOCKER_IMAGE:latest|" deployment.yml
+                // sed -i "s|image:.*|image: $DOCKERHUB_USER/$IMAGE_NAME:$IMAGE_TAG|" deployment.yml       
                 kubectl apply -f deployment.yml
                 kubectl apply -f service.yml
                 '''
