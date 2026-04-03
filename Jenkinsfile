@@ -50,7 +50,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE:latest .'
+                 docker rmi -f ${DOCKER_IMAGE}/${IMAGE_NAME}:${IMAGE_TAG} || true
+                 docker build -t ${DOCKER_IMAGE}/${IMAGE_NAME}:${IMAGE_TAG} .
+                
+                
             }
         }
 
@@ -86,6 +89,16 @@ pipeline {
         '''
     }
 }
+
+        
+stage('Push Image') {
+            steps {
+                sh "docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+                                     
+            }
+        }
+
+        
         
         stage('Deploy to EKS') {
             steps {
